@@ -96,95 +96,85 @@ export default function RaffleStatus() {
         <div className="p-5">
             {chainIdHex ? (
                 <>
-                    <ul class="list-group">
-                        <li class="list-group-item list-group-item-success">
-                            <h1 className="py-4 px-4 font-bold text-3xl">
-                                Raffle # {currentRaffleCount}
-                            </h1>{" "}
-                            (token amounts rounded to the nearest whole number)
-                        </li>
-                        <li class="list-group-item">
-                            <b>{isInRaffleText}</b>
-                        </li>
-                        <li class="list-group-item">
-                            <b>
-                                {numberWithCommas(
-                                    Math.round(ethers.utils.formatUnits(minEligibility, "ether"))
-                                )}{" "}
-                                Tokens
-                            </b>
-                            : Minimun Buy Required To Enter This Raffle
-                        </li>
-                        <li class="list-group-item">
-                            {" "}
-                            <b>{contestants}</b> Contestants In Current Raffle
-                        </li>
-                        <li class="list-group-item ">
-                            {" "}
-                            <b>
-                                {numberWithCommas(
-                                    Math.round(
-                                        ethers.utils.formatUnits(swapRaffleTokensAt, "ether")
-                                    )
-                                )}{" "}
-                                Tokens:
-                            </b>{" "}
-                            Reward Amount For Current Raffle
-                        </li>
-                        <li class="list-group-item">
-                            <b>
-                                {numberWithCommas(
-                                    Math.round(ethers.utils.formatUnits(raffleTokens, "ether"))
-                                )}{" "}
-                                Tokens:
-                            </b>{" "}
-                            Collected For Current Raffle (if this amount exceeds Reward Amount,
-                            raffle will execute with the next sell/transfer tx and surplus tokens
-                            will be sent to dead address)
-                        </li>
-                    </ul>
+                    <nav className="p-5 border-b-2 flex flex-row">
+                        <h1 className="py-4 px-4 font-bold text-3xl">
+                            Raffle # {currentRaffleCount} (token amounts rounded to the nearest
+                            whole number)
+                        </h1>
+                    </nav>
+                    <nav className="p-5 border-b-2 flex flex-row">
+                        {" "}
+                        <b>{isInRaffleText}</b>
+                    </nav>
+                    <nav className="p-5 border-b-2 flex flex-row">
+                        {" "}
+                        <b>
+                            {numberWithCommas(
+                                Math.round(ethers.utils.formatUnits(minEligibility, "ether"))
+                            )}{" "}
+                            tokens is minimun buy required to enter this raffle{" "}
+                        </b>
+                    </nav>
+                    <nav className="p-5 border-b-2 flex flex-row">
+                        {" "}
+                        <b>{contestants} contestants in current raffle </b>
+                    </nav>
+                    <nav className="p-5 border-b-2 flex flex-row">
+                        {" "}
+                        <b>
+                            {numberWithCommas(
+                                Math.round(ethers.utils.formatUnits(swapRaffleTokensAt, "ether"))
+                            )}{" "}
+                            tokens to be rewarded for current raffle{" "}
+                        </b>
+                    </nav>
+                    <nav className="p-5 border-b-2 flex flex-row">
+                        <b>
+                            {numberWithCommas(
+                                Math.round(ethers.utils.formatUnits(raffleTokens, "ether"))
+                            )}{" "}
+                            tokens collected for current raffle (if this amount exceeds Reward
+                            Amount, raffle will execute with the next sell/transfer tx and surplus
+                            tokens will be sent to dead address){" "}
+                        </b>
+                    </nav>
 
-                    <ul class="list-group">
-                        <li class="list-group-item list-group-item-success">
-                            <h1 className="py-4 px-4 font-bold text-3xl">Other Data</h1>
-                        </li>
-                        {/* <li class="list-group-item"> */}
-                        {/* <b>{ethers.utils.formatUnits(contractEthBalance, "ether")} ETH</b>{" "} */}
-                        {/* Currently Collected In Contract's ETH Treasury */}
-                        {/* </li> */}
-                        <li class="list-group-item">
-                            <b>
-                                {numberWithCommas(
-                                    Math.round(
-                                        ethers.utils.formatUnits(trustTokensTreasury, "ether")
-                                    )
-                                )}{" "}
-                                Tokens
-                            </b>{" "}
-                            Collected In Contract's Token Treasury
-                        </li>
-                        <li class="list-group-item">
-                            <b>
-                                {numberWithCommas(
-                                    Math.round(ethers.utils.formatUnits(balanceOfDead, "ether"))
-                                )}{" "}
-                                Tokens
-                            </b>{" "}
-                            Sent To Dead Address So Far
-                        </li>
-                        <li class="list-group-item">
-                            <b>
-                                {numberWithCommas(
-                                    Math.round(ethers.utils.formatUnits(balanceOfAccount, "ether"))
-                                )}{" "}
-                                Tokens
-                            </b>{" "}
-                            Held In Your Account
-                        </li>
-                    </ul>
+                    <nav className="p-5 border-b-2 flex flex-row">
+                        <h1 className="py-4 px-4 font-bold text-3xl">Other Data:</h1>
+                    </nav>
+                    <nav className="p-5 border-b-2 flex flex-row">
+                        <b>
+                            {numberWithCommas(
+                                Math.round(ethers.utils.formatUnits(trustTokensTreasury, "ether"))
+                            )}{" "}
+                            tokens collected in contract's token treasury{" "}
+                        </b>
+                    </nav>
+                    <nav className="p-5 border-b-2 flex flex-row">
+                        {" "}
+                        <b>
+                            {numberWithCommas(
+                                Math.round(ethers.utils.formatUnits(balanceOfDead, "ether"))
+                            )}{" "}
+                            tokens sent to dead address so far{" "}
+                        </b>
+                    </nav>
+                    <nav className="p-5 border-b-2 flex flex-row">
+                        {" "}
+                        <b>
+                            {numberWithCommas(
+                                Math.round(ethers.utils.formatUnits(balanceOfAccount, "ether"))
+                            )}{" "}
+                            tokens held in your account{" "}
+                        </b>
+                    </nav>
                 </>
             ) : (
-                <div>Please connect to Ethereum Mainnet.</div>
+                <nav className="p-5 border-b-2 flex flex-row">
+                    <h1 className="py-4 px-4 font-bold text-3xl">
+                        Please connect to Ethereum Mainnet.
+                    </h1>
+                </nav>
             )}
         </div>
     )
