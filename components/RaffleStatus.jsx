@@ -7,7 +7,6 @@ import { ethers } from "ethers"
 export default function RaffleStatus() {
     const { chainId: chainIdHex, isWeb3Enabled, account } = useMoralis()
 
-    const [contractEthBalance, setContractEthBalance] = useState("0")
     const [contestants, setContestants] = useState("0")
     const [swapRaffleTokensAt, setSwapRaffleAt] = useState("0")
     const [minEligibility, setMinEligibility] = useState("0")
@@ -57,10 +56,7 @@ export default function RaffleStatus() {
     }, [isWeb3Enabled])
 
     async function updateUI() {
-        const provider = new ethers.providers.Web3Provider(window.ethereum)
-        const contractEthBalanceFromCall = await provider.getBalance(contractAddress)
-
-        console.log(contractEthBalanceFromCall.toString())
+        // const tokenContract = new ethers.Contract(contractAddress, abi, account)
 
         const { 0: contestantsFromCall, 1: hodlersFromCall } = await getRaffleEntrantsCounts()
         const { 0: currentRaffleCountFromCall, 1: isInRaffleFromCall } = await getRaffleInfo()
@@ -83,7 +79,6 @@ export default function RaffleStatus() {
         const balanceOfDeadFromCall = await getBalanceOfDead()
         const balanceOfAccountFromCall = await getBalanceOfAccount()
 
-        setContractEthBalance(contractEthBalanceFromCall.toString())
         setContestants(contestantsFromCall.toString())
         setSwapRaffleAt(swapRaffleTokensAtFromCall.toString())
         setMinEligibility(minEligibilityFromCall.toString())
@@ -153,10 +148,10 @@ export default function RaffleStatus() {
                         <li class="list-group-item list-group-item-success">
                             <h1 className="py-4 px-4 font-bold text-3xl">Other Data</h1>
                         </li>
-                        <li class="list-group-item">
-                            <b>{ethers.utils.formatUnits(contractEthBalance, "ether")} ETH</b>{" "}
-                            Currently Collected In Contract's ETH Treasury
-                        </li>
+                        {/* <li class="list-group-item"> */}
+                        {/* <b>{ethers.utils.formatUnits(contractEthBalance, "ether")} ETH</b>{" "} */}
+                        {/* Currently Collected In Contract's ETH Treasury */}
+                        {/* </li> */}
                         <li class="list-group-item">
                             <b>
                                 {numberWithCommas(

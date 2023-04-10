@@ -7,6 +7,7 @@ import ManualHeader from "../components/ManualHeader"
 import Footer from "../components/Bootstrap"
 import Bootstrap from "../components/Bootstrap"
 import Jquery from "../components/Jquery"
+import BackToMain from "../components/BackToMain"
 
 export default function Home() {
     return (
@@ -22,6 +23,7 @@ export default function Home() {
                     crossorigin="anonymous"
                 ></link>
             </Head>
+            <BackToMain />
             <Header />
             <RaffleStatus />
         </div>
