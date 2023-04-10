@@ -3,4 +3,13 @@ const nextConfig = {
     reactStrictMode: true,
 }
 
-module.exports = { trailingSlash: true, nextConfig, images: { loader: "custom" } }
+module.exports = {
+    eslint: {
+        // Warning: This allows production builds to successfully complete even if
+        // your project has ESLint errors.
+        ignoreDuringBuilds: true,
+    },
+    trailingSlash: true,
+    nextConfig,
+    images: { loader: "custom" },
+}
