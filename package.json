@@ -1,12 +1,12 @@
 {
-  "name": "nextjs-smartcontract-lottery-fcc",
+  "name": "nextjs-erc",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "export": "next export"  
   },
   "dependencies": {
     "moralis": "^2.18.2",
