@@ -1,7 +1,7 @@
 import { contractAddress, abi } from "../constants"
 import { useMoralis, useWeb3Contract } from "react-moralis"
 import { useEffect, useState } from "react"
-import { useNotification } from "web3uikit"
+import { ConnectButton } from "web3uikit"
 import { ethers } from "ethers"
 
 export default function RaffleStatus() {
@@ -135,9 +135,13 @@ export default function RaffleStatus() {
                                     Math.round(ethers.utils.formatUnits(raffleTokens, "ether"))
                                 )}{" "}
                             </b>{" "}
-                            tokens collected for current raffle (if this amount exceeds tokens to
-                            be rewarded, raffle will execute with the next sell/transfer tx and
-                            surplus tokens will be sent to dead address)
+                            tokens collected for current raffle. Once this amount exceeds{" "}
+                            {numberWithCommas(
+                                Math.round(ethers.utils.formatUnits(swapRaffleTokensAt, "ether"))
+                            )}{" "}
+                            tokens, the first sell/transfer tx will trigger the raffle. The winner
+                            (if any) will get the reward and all surplus tokens will be sent to
+                            dead address
                         </li>
                     </ul>
 
@@ -178,7 +182,7 @@ export default function RaffleStatus() {
                     </ul>
                 </>
             ) : (
-                <div>Please connect to Ethereum Mainnet.</div>
+                <div>Please connect your wallet.</div>
             )}
         </div>
     )
