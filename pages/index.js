@@ -1,8 +1,8 @@
 import Head from "next/head"
 import styles from "../styles/Home.module.css"
-import Header from "../components/Header"
 import RaffleStatus from "../components/RaffleStatus"
-import BackToMain from "../components/BackToMain"
+import Header from "../components/Header"
+import Title from "../components/Title"
 
 export default function Home() {
     return (
@@ -18,8 +18,8 @@ export default function Home() {
                     crossorigin="anonymous"
                 ></link>
             </Head>
-            <BackToMain />
             <Header />
+            <Title />
             <RaffleStatus />
         </div>
     )
