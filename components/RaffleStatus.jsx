@@ -1,7 +1,7 @@
 import { contractAddress, abi } from "../constants"
 import { useMoralis, useWeb3Contract } from "react-moralis"
 import { useEffect, useState } from "react"
-import { ConnectButton } from "web3uikit"
+// import { ConnectButton } from "web3uikit"
 import { ethers } from "ethers"
 
 export default function RaffleStatus() {
@@ -182,7 +182,7 @@ export default function RaffleStatus() {
                     </ul>
                 </>
             ) : (
-                <div>Please connect your wallet.</div>
+                <div className="text-amber-700">Please connect your wallet (MetaMask only)</div>
             )}
         </div>
     )
