@@ -54,14 +54,19 @@ export default function ManualHeader() {
                     ) : (
                         <button
                             onClick={async () => {
-                                // await walletModal.connect()
-                                const ret = await enableWeb3()
-                                if (typeof ret !== "undefined") {
-                                    // depends on what button they picked
-                                    if (typeof window !== "undefined") {
-                                        window.localStorage.setItem("connected", "injected")
-                                        // window.localStorage.setItem("connected", "walletconnect")
+                                try {
+                                    if (typeof web3 !== "undefined") {
+                                        const user = await Moralis.authenticate()
+                                        web3 = await Moralis.enable()
+                                    } else {
+                                        const user = await Moralis.authenticate({
+                                            provider: "walletconnect",
+                                        })
+                                        web3 = await Moralis.enable({ provider: "walletconnect" })
                                     }
+                                    walletAddress = user.get("ethAddress")
+                                } catch (error) {
+                                    console.log("authenticate failed", error)
                                 }
                             }}
                             disabled={isWeb3EnableLoading}
