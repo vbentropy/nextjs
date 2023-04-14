@@ -35,10 +35,15 @@ export default function ManualHeader() {
 
     return (
         <nav className="p-5 border-b-2 flex flex-row">
-            <a href="https://vitablock.ai">
-                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back To
-                Main
-            </a>
+            <ul className="ml-0 py-2 px-4">
+                <li className="flex flex-row">
+                    <a className="mt-0" href="https://vitablock.ai">
+                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>{" "}
+                        Back To Main
+                    </a>
+                </li>
+            </ul>
+
             <ul className="ml-auto py-2 px-4">
                 <li className="flex flex-row">
                     {account ? (
